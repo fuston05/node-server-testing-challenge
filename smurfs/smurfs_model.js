@@ -10,10 +10,18 @@ function find(){
   return db('smurfs').select('id', 'name');
 }//end find
 
-function add(smurfData){
-  return db('smurfs').insert(smurfData, 'id');
+function findById(id){
+  return db('smurfs').where({id}).select('id', 'name').first()
+}//end findById
+
+async function add(smurfData){
+  const [id]= await db('smurfs').insert(smurfData)
+  return findById(id);
 }//end add
 
-function remove(id){
-  return db('smurfs').where({id: id}).del(id);
+async function remove(id){
+  return db('smurfs')
+  .select('id')
+  .where({id: id }).del(id);
+
 }//end remove

@@ -20,6 +20,19 @@ module.exports = {
       }
     }
   },
+  testing: {
+    client: 'sqlite3',
+    connection: {
+      filename: './database/smurfs.db3'
+    },
+    migrations: {
+      directory: 'database/migrations'
+    },
+    seeds: {
+      directory: 'database/seeds'
+    },
+    useNullAsDefault: true,
+  },
 
   staging: {
     client: 'postgresql',
